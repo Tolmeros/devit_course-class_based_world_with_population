@@ -1,5 +1,5 @@
 /*
-Bugmon = Bug Monster (like Pokemon)
+Bugmon = [software] Bug Monster (like Pokemon)
 */
 
 module.exports = class Bugmon {
