@@ -5,8 +5,8 @@ module.exports = class BugmonMale extends Bugmon {
   #age;
   #weight;
 
-  constructor() {
-    super(Bugmon.PHYSICAL_GENDER_MALE, [4,7]);
+  constructor(eyesColor) {
+    super(Bugmon.PHYSICAL_GENDER_MALE, [4,7], eyesColor);
   }
 
   changeWeight(age, weight) {

@@ -40,13 +40,14 @@ module.exports = class Bugmon {
     return weight;
   }
 
-  constructor(gender, weight=10) {
+  constructor(gender, weight=10, eyesColor) {
     //console.log(`Bugmon.constructor: ${gender}`);
     // как сделать helper log - что бы он класс и метод сам писал?
 
     this.#physicalGender = gender;
     this.#weight = Bugmon.#generateInitialWeight(weight);
-
+    this.#eyesColor = eyesColor ?? helpers.getRandomElemetFromArray(Bugmon.BUGMON_EYES_COLOR);
+    console.log(`Bugmon.constructor: eyesColor = ${this.#eyesColor}`);
     //console.log(`Bugmon.constructor: weight = ${this.#weight}`);
   }
 
@@ -115,6 +116,10 @@ module.exports = class Bugmon {
   set reproduceAbility(value) {
     // check if value bool
     this.#reproduceAbility = value;
+  }
+
+  get eyesColor() {
+    return this.#eyesColor;
   }
 
 }

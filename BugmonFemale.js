@@ -5,8 +5,8 @@ const helpers = require('./helpers.js');
 module.exports = class BugmonFemale extends Bugmon {
   #reproductionBan = 0;
 
-  constructor() {
-    super(Bugmon.PHYSICAL_GENDER_FEMALE, [3,5]);
+  constructor(eyesColor) {
+    super(Bugmon.PHYSICAL_GENDER_FEMALE, [3,5], eyesColor);
 
   }
 
@@ -41,14 +41,30 @@ module.exports = class BugmonFemale extends Bugmon {
         (helpers.getRandomInt(0, 101) < 60)
       ) {
 
-      let child = (helpers.getRandomInt(0, 101) < 57) ?
-        new BugmonFemale() : new BugmonMale();
+        let eyeChance = helpers.getRandomInt(0, 101);
+        let eyesColor;
+        if (eyeChance < 40) {
+          eyesColor = this.eyesColor;
+        }
+        else if (eyeChance < 80) {
+          eyesColor = creature.eyesColor;
+        }
+        else {
+          let otherColors = helpers.arrayWithoutElements(
+            Bugmon.BUGMON_EYES_COLOR,
+            [this.eyesColor, creature.eyesColor]
+          );
+          eyesColor = helpers.getRandomElemetFromArray(otherColors);
+        }
 
-      this.#reproductionBan = helpers.getRandomInt(1, 3);
-      this.reproduceAbility = false;
-      // change weight
+        let child = (helpers.getRandomInt(0, 101) < 57) ?
+          new BugmonFemale(eyesColor) : new BugmonMale(eyesColor);
 
-      return child;
+        this.#reproductionBan = helpers.getRandomInt(1, 3);
+        this.reproduceAbility = false;
+        // change weight
+
+        return child;
     }
 
     return null;
