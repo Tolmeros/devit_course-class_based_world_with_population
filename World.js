@@ -70,6 +70,14 @@ module.exports = class World {
   }
 
   meet(creatureA, creatureB) {
+    //console.log('meet');
+    //console.log(creatureA);
+    //console.log(creatureB);
+
+    if (creatureA.gender == creatureB.gender) {
+      return null;
+    }
+
     if (creatureA.gender == Bugmon.PHYSICAL_GENDER_FEMALE) {
       return creatureA.getBirthFrom(creatureB);
     }
@@ -85,12 +93,17 @@ module.exports = class World {
       let meetCount = helpers.getRandomInt(0, this.#population.length*3);
       do {
         let creatureA = helpers.getRandomElemetFromArray(this.#population);
-        let otherCreatures = [...this.#population].splice(
+        let otherCreatures = [...this.#population]
+        otherCreatures.splice(
           this.#population.indexOf(creatureA),
           1
         );
+        //console.log('populate');
+        //console.log(creatureA);
+        //console.log(otherCreatures);
 
         let creatureB = helpers.getRandomElemetFromArray(otherCreatures);
+        //console.log(creatureB);
 
         let child = this.meet(creatureA, creatureB);
         if (child) {

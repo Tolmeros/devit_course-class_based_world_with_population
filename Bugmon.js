@@ -76,7 +76,7 @@ module.exports = class Bugmon {
     if ((this.#age <= 10) && (this.#weight < 2)) {
       this.death();
     }
-    else if ((this.#age > 10) && (this.#weight < 18)) {
+    else if ((this.#age > 10) && (this.#weight < 16)) {
       this.death();
     }
   }
