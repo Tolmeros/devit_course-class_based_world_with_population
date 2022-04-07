@@ -93,14 +93,20 @@ module.exports = class World {
       let meetCount = helpers.getRandomInt(0, this.#population.length*3);
       do {
         let creatureA = helpers.getRandomElemetFromArray(this.#population);
-        let otherCreatures = [...this.#population]
+        /*
+        let otherCreatures = [...this.#population];
         otherCreatures.splice(
           this.#population.indexOf(creatureA),
           1
         );
+        */
         //console.log('populate');
         //console.log(creatureA);
         //console.log(otherCreatures);
+        let otherCreatures = helpers.arrayWithoutElements(
+          this.#population,
+          [creatureA]
+        );
 
         let creatureB = helpers.getRandomElemetFromArray(otherCreatures);
         //console.log(creatureB);

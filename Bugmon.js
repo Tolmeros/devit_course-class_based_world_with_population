@@ -7,9 +7,20 @@ const helpers = require('./helpers.js')
 module.exports = class Bugmon {
   static PHYSICAL_GENDER_MALE = "male";
   static PHYSICAL_GENDER_FEMALE = "female";
-  static HUMAN_PHYSICAL_GENDERS = [
+  static BUGMON_PHYSICAL_GENDERS = [
     Bugmon.PHYSICAL_GENDER_MALE,
     Bugmon.PHYSICAL_GENDER_FEMALE
+  ];
+
+  static EYES_COLOR_BLACK = "black";
+  static EYES_COLOR_GREEN = "green";
+  static EYES_COLOR_PURPLE = "purple";
+  static EYES_COLOR_BLUE = "blue";
+  static BUGMON_EYES_COLOR = [
+    Bugmon.EYES_COLOR_BLACK,
+    Bugmon.EYES_COLOR_GREEN,
+    Bugmon.EYES_COLOR_PURPLE,
+    Bugmon.EYES_COLOR_BLUE,
   ];
 
   #age = 0;
